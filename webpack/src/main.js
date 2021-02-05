@@ -1,1 +1,3 @@
-console.log("Mourad EL CADI is On");
+import "./asset/main.css";
+
+console.log("Mourad hello");

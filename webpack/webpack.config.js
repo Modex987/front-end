@@ -11,6 +11,8 @@ module.exports = {
 		filename: "index.js",
 	},
 
+	devtool: false,
+
 	devServer: {
 		contentBase: path.join(__dirname, "dist"),
 		compress: true,
@@ -31,10 +33,18 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
+				include: path.resolve(__dirname, "src"),
 				exclude: /(node_modules)/,
 				use: {
 					loader: "babel-loader",
 				},
+			},
+
+			{
+				test: /\.css$/,
+				include: path.resolve(__dirname, "src"),
+				exclude: /(node_modules)/,
+				use: ["style-loader", "css-loader", "postcss-loader"],
 			},
 		],
 	},
