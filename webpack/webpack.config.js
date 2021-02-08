@@ -1,5 +1,9 @@
 const path = require("path");
+// const glob = require("glob");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const PurgecssPlugin = require("purgecss-webpack-plugin");
 
 module.exports = {
 	mode: "development", // "production" | "development" | "none"
@@ -27,6 +31,17 @@ module.exports = {
 			filename: "index.html",
 			inject: "body",
 		}),
+
+		// new MiniCssExtractPlugin({
+		// 	filename: "style.css",
+		// }),
+
+		// new PurgecssPlugin({
+		// 	paths: glob.sync(`${path.join(__dirname, "src")}/**/*`),
+
+		// 	defaultExtractor: (content) => content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [],
+		// 	// defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+		// }),
 	],
 
 	module: {
@@ -40,12 +55,12 @@ module.exports = {
 				},
 			},
 
-			{
-				test: /\.css$/,
-				include: path.resolve(__dirname, "src"),
-				exclude: /(node_modules)/,
-				use: ["style-loader", "css-loader", "postcss-loader"],
-			},
+			// {
+			// 	test: /\.css$/,
+			// 	include: path.resolve(__dirname, "src"),
+			// 	exclude: /(node_modules)/,
+			// 	use: ["style-loader", "css-loader", "postcss-loader", MiniCssExtractPlugin.loader],
+			// },
 		],
 	},
 };
